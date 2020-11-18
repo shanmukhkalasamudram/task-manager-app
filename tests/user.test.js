@@ -102,7 +102,7 @@ test('Should not update invalid user fields', async () => {
         .patch('/users/me')
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send({
-            location: 'Inida'
+            location: 'India'
         })
         .expect(400)
 })
