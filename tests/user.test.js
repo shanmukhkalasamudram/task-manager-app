@@ -20,7 +20,7 @@ test('Should signup a new user', async () => {
     expect(response.body).toMatchObject({
         user: {
             name: 'shanmukh',
-            email: 'andrew@example.com'
+            email: 'shanmukh@gnmail.com'
         },
         token: user.tokens[0].token
     })
@@ -39,7 +39,7 @@ test('Should login existing user', async () => {
 test('Should not login nonexistent user', async () => {
     await request(app).post('/users/login').send({
         email: userOne.email,
-        password: 'thisisnotmypass'
+        password: 'thiis'
     }).expect(400)
 })
 
@@ -90,7 +90,7 @@ test('Should update valid user fields', async () => {
         .patch('/users/me')
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send({
-            name: 'Jess'
+            name: 'shan'
         })
         .expect(200)
     const user = await User.findById(userOneId)
@@ -102,7 +102,7 @@ test('Should not update invalid user fields', async () => {
         .patch('/users/me')
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send({
-            location: 'Philadelphia'
+            location: 'Inida'
         })
         .expect(400)
 })
